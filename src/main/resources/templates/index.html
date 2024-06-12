@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>welcome page</title>
+</head>
+<body>
+<form>
+    <form th:action="@{/savelibrary}" th:object="${library}" method="post">
+        <input type="text" th:field="*{book_id}" placeholder="enter the book_id" required/> <br>
+        <input type="text" th:field="*{author}" placeholder="enter the author" required/> <br>
+        <input type="text" th:field="*{bookname}" placeholder="enter the bookname " required/> <br>
+        <input type="number" th:field="*{noofcopies}" placeholder="enter the noofcopies" required/> <br>
+        <br>
+        <input type="submit" value="submit">&nbsp;&nbsp;&nbsp;
+        <input type="reset" value="reset">
+    </form>
+    <table th:border="1px">
+        <tr>
+            <th>book_id</th>
+            <th>bookname</th>
+            <th>author</th>
+            <th>noofcopies</th>
+            <th>Action</th>
+        </tr>
+        <tr th:each="lib, rowStat: ${libraries}">
+            <td th:text="${rowStat.count}"></td>
+            <td th:text="${lib.bookname}"></td>
+            <td th:text="${lib.author}"></td>
+            <td th:text="${lib.noofcopies}"></td>
+
+          <td> <a th:href="@{/editlibrary/{id}(id=${lib.id})}">Edit</a>&nbsp; &nbsp;</td>&nbsp;&nbsp;&nbsp;
+            <td> <a th:href="@{/deletelibrary/{id}(id=${lib.id})}">Delete</a></td>
+        </tr>
+    </table>
+
+</form>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<form th:action="@{/updatelibrary}" th:object="${lib}" method="post">
+  <input type="hidden" th:field="*{book_id}" /> <br>
+  <input type="text" th:field="*{bookname}" placeholder="enter the bookname" required/> <br>
+  <input type="text" th:field="*{author}" placeholder="enter the author" required/> <br>
+  <input type="number" th:field="*{noofcopies}" placeholder="enter the number of copies" required/> <br>
+  <input type="submit" value="update">&nbsp;&nbsp;&nbsp;
+</form><br>
+</body>
+</html>
